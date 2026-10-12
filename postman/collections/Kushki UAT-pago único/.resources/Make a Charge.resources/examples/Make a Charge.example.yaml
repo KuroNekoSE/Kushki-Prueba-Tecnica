@@ -1,0 +1,79 @@
+$kind: http-example
+request:
+  url: "{{base_url}}/card/v1/charges"
+  method: POST
+  headers:
+    Private-Merchant-Id: "{{vault:kushki-private-key}}"
+    Content-Type: application/json
+  body:
+    type: json
+    content: "{\r
+
+      \  \"token\": \"{{card_token}}\",\r
+
+      \  \"amount\": {\r
+
+      \    \"subtotalIva\": 0,\r
+
+      \    \"subtotalIva0\": 1000,\r
+
+      \    \"ice\": 0,\r
+
+      \    \"iva\": 0,\r
+
+      \    \"currency\": \"MXN\"\r
+
+      \  },\r
+
+      \  \"fullResponse\": true\r
+
+      }"
+response:
+  statusCode: 400
+  statusText: ""
+  headers:
+    :status: "400"
+    date: Mon, 12 Oct 2026 05:54:34 GMT
+    content-type: application/json
+    content-length: "480"
+    cf-ray: a493d99d9c97f88b-QRO
+    cf-cache-status: DYNAMIC
+    access-control-allow-origin: "*"
+    server: cloudflare
+    strict-transport-security: max-age=31536000; includeSubDomains; preload
+    via: 1.1 278b055cd54ddf1ddab3115125ee9176.cloudfront.net (CloudFront)
+    access-control-allow-credentials: "true"
+    x-amz-apigw-id: FHdjQEf5oAMEXhQ=
+    x-amz-cf-id: Vg03R30WjE6v3Lr174CAj1eXCPki3NhvM456xAE6Mn-kHjxZVDOrzg==
+    x-amz-cf-pop: DFW59-P8
+    x-amzn-requestid: 50276864-f549-4a87-9a8b-291998513e9f
+    x-amzn-trace-id: Root=1-6acc7614-14fe0ac90fea409161a043c0
+    x-cache: Error from cloudfront
+  body:
+    type: json
+    content: |-
+      {
+        "code": "K322",
+        "message": "Transacción rechazada.",
+        "details": {
+          "canIgnoreWarnings": false,
+          "rules": [],
+          "baseMessage": "blocked",
+          "recap": "",
+          "approvedTransactionAmount": 0,
+          "ticketNumber": "",
+          "binCard": "",
+          "transactionId": "1294176296328060928",
+          "paymentBrand": "",
+          "responseCode": "K322",
+          "responseText": "Transacción rechazada.",
+          "merchantName": "WILLIAM TA Branch Mexico",
+          "cardHolderName": "",
+          "lastFourDigitsOfCard": "",
+          "approvalCode": "",
+          "processorName": "",
+          "metadata": {}
+        },
+        "transactionReference": ""
+      }
+order: 1000

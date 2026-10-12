@@ -1,0 +1,42 @@
+$kind: http-request
+description: ""
+url: "{{base_url}}/card/v1/charges"
+method: POST
+headers:
+  Private-Merchant-Id: "{{vault:kushki-private-key}}"
+  Content-Type: application/json
+body:
+  type: json
+  content: "{\r
+
+    \  \"token\": \"{{card_token}}\",\r
+
+    \  \"amount\": {\r
+
+    \    \"subtotalIva\": 0,\r
+
+    \    \"subtotalIva0\": 1000,\r
+
+    \    \"ice\": 0,\r
+
+    \    \"iva\": 0,\r
+
+    \    \"currency\": \"MXN\"\r
+
+    \  },\r
+
+    \  \"fullResponse\": true\r
+
+    }"
+scripts:
+  - type: afterResponse
+    code: "const body = pm.response.json();\r
+
+      if (body.ticketNumber) {\r
+
+      \  pm.environment.set(\"ticket_number\", body.ticketNumber);\r
+
+      }"
+    language: text/javascript
+examples: .resources/Make a Charge.resources/examples
+order: 2000

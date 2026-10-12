@@ -1,0 +1,15 @@
+$kind: http-request
+description: ""
+url: "{{base_url}}/analytics/v2/transactions-list?from=2022-03-10T13:39:00.836&to=2022-03-10T13:39:00.836"
+method: GET
+headers:
+  Private-Merchant-Id: "{{vault:kushki-private-key}}"
+  Content-Type: application/json
+queryParams:
+  from: 2022-03-10T13:39:00.836
+  to: 2022-03-10T13:39:00.836
+body:
+  type: json
+  content: ""
+examples: .resources/Get List Transaction v2.resources/examples
+order: 3000

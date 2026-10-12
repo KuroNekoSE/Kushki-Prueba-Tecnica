@@ -1,0 +1,38 @@
+$kind: http-example
+request:
+  url: "{{base_url}}/v1/charges/{{ticket_number}}"
+  method: DELETE
+  headers:
+    Private-Merchant-Id: "{{vault:kushki-private-key}}"
+  body:
+    type: json
+    content: ""
+response:
+  statusCode: 400
+  statusText: ""
+  headers:
+    :status: "400"
+    date: Mon, 12 Oct 2026 06:19:50 GMT
+    content-type: application/json
+    content-length: "50"
+    cf-ray: a493fea6fbc71f76-QRO
+    cf-cache-status: DYNAMIC
+    access-control-allow-origin: "*"
+    server: cloudflare
+    strict-transport-security: max-age=31536000; includeSubDomains; preload
+    via: 1.1 72effd5076df8f62aaf006d6a0074238.cloudfront.net (CloudFront)
+    access-control-allow-credentials: "true"
+    x-amz-apigw-id: FHhQTEO1IAMEMgg=
+    x-amz-cf-id: JkLqyQ_FNlQJX7o2JhDLGPLKkOTXyZ5YF7nV8xiwNEbd59RUIjXiKw==
+    x-amz-cf-pop: MIA50-P4
+    x-amzn-requestid: 641d03a7-3788-4ab5-a0e0-ec6a9b032a0b
+    x-amzn-trace-id: Root=1-6acc7c01-5fc9296c72cef8a13d820538
+    x-cache: Error from cloudfront
+  body:
+    type: json
+    content: |-
+      {
+        "code": "K067",
+        "message": "Transacción no existe"
+      }
+order: 1000

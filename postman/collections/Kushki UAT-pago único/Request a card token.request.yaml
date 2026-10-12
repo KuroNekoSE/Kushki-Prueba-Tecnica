@@ -1,5 +1,37 @@
 $kind: http-request
-url: Request a card token
-method: GET
+url: "{{base_url}}/card/v1/tokens"
+method: POST
+headers:
+  Public-Merchant-Id: "{{public_key}}"
+  Content-Type: application/json
+body:
+  type: json
+  content: "{\r
+
+    \  \"card\": {\r
+
+    \    \"name\": \"Juan Perez\",\r
+
+    \    \"number\": \"5451951574925480\",\r
+
+    \    \"expiryMonth\": \"12\",\r
+
+    \    \"expiryYear\": \"30\",\r
+
+    \    \"cvv\": \"123\"\r
+
+    \  },\r
+
+    \  \"totalAmount\": 1000,\r
+
+    \  \"currency\": \"MXN\"\r
+
+    }"
+scripts:
+  - type: afterResponse
+    code: "const body = pm.response.json();\r
+
+      pm.environment.set(\"card_token\", body.token);"
+    language: text/javascript
 examples: .resources/Request a card token.resources/examples
 order: 1000
