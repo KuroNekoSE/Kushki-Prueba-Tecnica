@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Prueba de token - Kushki UAT</title>
+</head>
+<body>
+  <h1>Prueba de token (UAT)</h1>
+
+  <form id="payment-form">
+    <input type="text" id="name" placeholder="Nombre del titular" value="Juan Perez" required>
+    <input type="text" id="number" placeholder="Número de tarjeta" inputmode="numeric" maxlength="16" value="5451951574925480" required>
+    <input type="text" id="expiry_month" placeholder="MM" inputmode="numeric" maxlength="2" value="12" required>
+    <input type="text" id="expiry_year" placeholder="AA" inputmode="numeric" maxlength="2" value="30" required>
+    <input type="password" id="cvv" placeholder="CVV" inputmode="numeric" maxlength="4" value="123" required>
+    <button type="submit" id="pay-button">Obtener token</button>
+  </form>
+
+  <h2>Resultado</h2>
+  <pre id="result">Aún no hay resultado.</pre>
+
+  <script src="https://cdn.kushkipagos.com/kushki.min.js"></script>
+  <script>
+    const PUBLIC_KEY = "01511a7d305d4765ba747e7d6a694906";
+    const kushki = new Kushki({ merchantId: PUBLIC_KEY, inTestEnvironment: true });
+
+    const form = document.getElementById("payment-form");
+    const button = document.getElementById("pay-button");
+    const result = document.getElementById("result");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      button.disabled = true;
+      result.textContent = "Solicitando token...";
+
+      kushki.requestToken({
+        amount: "20",
+        currency: "MXN",
+        card: {
+          name: document.getElementById("name").value,
+          number: document.getElementById("number").value,
+          cvc: document.getElementById("cvv").value,
+          expiryMonth: document.getElementById("expiry_month").value,
+          expiryYear: document.getElementById("expiry_year").value
+        }
+      }, (response) => {
+        result.textContent = JSON.stringify(response, null, 2);
+        button.disabled = false;
+      });
+    });
+  </script>
+</body>
+</html>

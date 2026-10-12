@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Kajita - Kushki UAT</title>
+  <script src="https://cdn.kushkipagos.com/kushki-checkout.js"></script>
+</head>
+<body>
+  <h1>Prueba de Kajita (UAT)</h1>
+
+  <form id="my-form" action="/confirm" method="post">
+    <input type="hidden" name="cart_id" value="123">
+  </form>
+
+  <script type="text/javascript">
+    var kushki = new KushkiCheckout({
+      kformId: "QweqiLYV9",
+      form: "my-form",
+      publicMerchantId: "01511a7d305d4765ba747e7d6a694906",
+      inTestEnvironment: true,
+      amount: {
+        subtotalIva: 0,
+        iva: 0,
+        subtotalIva0: 1000
+      }
+    });
+  </script>
+</body>
+</html>

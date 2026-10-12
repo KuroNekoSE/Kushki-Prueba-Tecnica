@@ -1,0 +1,5 @@
+$kind: http-request
+url: Request a card token
+method: GET
+examples: .resources/Request a card token.resources/examples
+order: 1000

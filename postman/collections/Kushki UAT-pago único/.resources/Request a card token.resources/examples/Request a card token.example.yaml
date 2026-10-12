@@ -1,0 +1,59 @@
+$kind: http-example
+request:
+  url: "{{base_url}}/card/v1/tokens"
+  method: POST
+  headers:
+    Public-Merchant-Id: "{{public_key}}"
+    Content-Type: application/json
+  body:
+    type: json
+    content: "{\r
+
+      \  \"card\": {\r
+
+      \    \"name\": \"Juan Perez\",\r
+
+      \    \"number\": \"5451951574925480\",\r
+
+      \    \"expiryMonth\": \"12\",\r
+
+      \    \"expiryYear\": \"30\",\r
+
+      \    \"cvv\": \"123\"\r
+
+      \  },\r
+
+      \  \"totalAmount\": 20,\r
+
+      \  \"currency\": \"MXN\"\r
+
+      }"
+response:
+  statusCode: 400
+  statusText: ""
+  headers:
+    :status: "400"
+    date: Sun, 11 Oct 2026 22:17:33 GMT
+    content-type: application/json
+    content-length: "51"
+    cf-ray: a4913c4149a337ff-QRO
+    cf-cache-status: DYNAMIC
+    access-control-allow-origin: "*"
+    server: cloudflare
+    strict-transport-security: max-age=31536000; includeSubDomains; preload
+    via: 1.1 b3b73717c02c31ac2a1ca68082bf2264.cloudfront.net (CloudFront)
+    access-control-allow-credentials: "true"
+    x-amz-apigw-id: FGangFLmoAMEjoA=
+    x-amz-cf-id: GWaIEKhKOV1t7r21FX-0bby9a_AMvNI6CYcw7UUPCTp3UQKMfK7IuA==
+    x-amz-cf-pop: MIA50-P4
+    x-amzn-requestid: 63960dc4-ee8e-424a-8de7-ccb0ab26d64b
+    x-amzn-trace-id: Root=1-6acc0afc-495ea44a07a414463e4c4bac
+    x-cache: Error from cloudfront
+  body:
+    type: json
+    content: |-
+      {
+        "code": "K322",
+        "message": "Transacción rechazada."
+      }
+order: 1000

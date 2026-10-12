@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pago con tarjeta - Kushki UAT</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 420px; margin: 2rem auto; padding: 0 1rem; }
+    label { display: block; margin-top: 1rem; font-size: 0.9rem; }
+    input { width: 100%; padding: 0.5rem; box-sizing: border-box; }
+    .row { display: flex; gap: 0.5rem; }
+    button { margin-top: 1.5rem; width: 100%; padding: 0.75rem; font-size: 1rem; }
+    button:disabled { opacity: 0.6; cursor: not-allowed; }
+    #form-error { color: #d93025; min-height: 1.2rem; }
+    #result { margin-top: 1.5rem; padding: 1rem; border-radius: 6px; display: none; }
+    #result.approved { background: #e6f4ea; border: 1px solid #1e8e3e; }
+    #result.declined { background: #fce8e6; border: 1px solid #d93025; }
+    #result.error { background: #fef7e0; border: 1px solid #f9ab00; }
+  </style>
+</head>
+<body>
+  <h1>Pago con tarjeta</h1>
+  <p id="total">Cargando...</p>
+
+  <form id="payment-form" novalidate autocomplete="off">
+    <label>Nombre del titular
+      <input type="text" id="name">
+    </label>
+    <label>Número de tarjeta
+      <input type="text" id="number" inputmode="numeric" maxlength="16">
+    </label>
+    <div class="row">
+      <label>Mes (MM)
+        <input type="text" id="expiry_month" inputmode="numeric" maxlength="2">
+      </label>
+      <label>Año (AA)
+        <input type="text" id="expiry_year" inputmode="numeric" maxlength="2">
+      </label>
+      <label>CVV
+        <input type="password" id="cvv" inputmode="numeric" maxlength="4">
+      </label>
+    </div>
+    <p id="form-error" role="alert"></p>
+    <button type="submit" id="pay-button" disabled>Pagar</button>
+  </form>
+
+  <div id="result" role="status"></div>
+  <p><small>Ambiente de pruebas (UAT) · Pagos procesados con Kushki</small></p>
+
+  <script src="https://cdn.kushkipagos.com/kushki.min.js"></script>
+  <script>
+    const form = document.getElementById("payment-form");
+    const button = document.getElementById("pay-button");
+    const totalEl = document.getElementById("total");
+    const formError = document.getElementById("form-error");
+    const result = document.getElementById("result");
+    const nameInput = document.getElementById("name");
+    const numberInput = document.getElementById("number");
+    const monthInput = document.getElementById("expiry_month");
+    const yearInput = document.getElementById("expiry_year");
+    const cvvInput = document.getElementById("cvv");
+
+    let kushki = null;
+    let config = null;
+
+    // Solo se permiten números en estos campos.
+    [numberInput, monthInput, yearInput, cvvInput].forEach((input) => {
+      input.addEventListener("input", () => {
+        input.value = input.value.replace(/\D/g, "");
+      });
+    });
+
+    async function init() {
+      try {
+        const res = await fetch("/api/config");
+        config = await res.json();
+        kushki = new Kushki({ merchantId: config.publicKey, inTestEnvironment: true });
+        const money = new Intl.NumberFormat("es-MX", { style: "currency", currency: config.currency });
+        totalEl.textContent = "Total a pagar: " + money.format(config.amount);
+        button.disabled = false;
+      } catch (error) {
+        totalEl.textContent = "No se pudo cargar la configuración del pago.";
+      }
+    }
+
+    function validate() {
+      if (nameInput.value.trim().length < 2) return "Escribe el nombre del titular.";
+      const len = numberInput.value.length;
+      if (len < 13 || len > 16) return "El número de tarjeta debe tener entre 13 y 16 dígitos.";
+      const month = Number(monthInput.value);
+      if (!(month >= 1 && month <= 12)) return "El mes debe estar entre 01 y 12.";
+      if (yearInput.value.length !== 2) return "El año debe tener 2 dígitos.";
+      const expiry = new Date(2000 + Number(yearInput.value), month, 1);
+      if (expiry <= new Date()) return "La tarjeta está vencida.";
+      if (cvvInput.value.length < 3) return "El CVV debe tener 3 o 4 dígitos.";
+      return null;
+    }
+
+    function showResult(kind, title, detail) {
+      result.className = "";
+      result.textContent = "";
+      if (!kind) {
+        result.style.display = "none";
+        return;
+      }
+      result.classList.add(kind);
+      result.style.display = "block";
+      const heading = document.createElement("strong");
+      heading.textContent = title;
+      const text = document.createElement("p");
+      text.textContent = detail;
+      result.append(heading, text);
+    }
+
+    async function sendCharge(token) {
+      try {
+        const res = await fetch("/api/charge", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ token: token }),
+        });
+        const data = await res.json();
+
+        if (data.status === "approved") {
+          showResult("approved", "Pago aprobado", "Número de ticket: " + data.ticketNumber);
+          // El botón queda desactivado para evitar un segundo cobro.
+        } else if (data.status === "declined") {
+          const code = data.code ? " (código " + data.code + ")" : "";
+          showResult("declined", "Pago declinado", data.message + code);
+          button.disabled = false;
+        } else if (data.status === "uncertain") {
+          showResult("error", "Resultado incierto", data.message);
+          // Sigue desactivado: no se debe reintentar sin verificar.
+        } else {
+          showResult("error", "No se pudo procesar el pago", data.message || "Intenta de nuevo.");
+          button.disabled = false;
+        }
+      } catch (error) {
+        showResult("error", "No se pudo procesar el pago", "No se pudo contactar al servidor.");
+        button.disabled = false;
+      }
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (button.disabled) return;
+
+      const problem = validate();
+      if (problem) {
+        formError.textContent = problem;
+        return;
+      }
+      formError.textContent = "";
+      button.disabled = true;
+      showResult(null);
+
+      kushki.requestToken(
+        {
+          amount: String(config.amount),
+          currency: config.currency,
+          card: {
+            name: nameInput.value.trim(),
+            number: numberInput.value,
+            cvc: cvvInput.value,
+            expiryMonth: monthInput.value,
+            expiryYear: yearInput.value,
+          },
+        },
+        (response) => {
+          // Por seguridad, se borran el número y el CVV apenas hay respuesta.
+          numberInput.value = "";
+          cvvInput.value = "";
+
+          if (response.code) {
+            showResult(
+              "declined",
+              "No se pudo validar la tarjeta",
+              response.message + " (código " + response.code + ")"
+            );
+            button.disabled = false;
+            return;
+          }
+          sendCharge(response.token);
+        }
+      );
+    });
+
+    init();
+  </script>
+</body>
+</html>
