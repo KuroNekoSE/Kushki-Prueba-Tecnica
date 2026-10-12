@@ -19,7 +19,10 @@ CURRENCY = "MXN"
 app = Flask(__name__, static_folder="static", static_url_path="")
 
 logging.basicConfig(
-    filename="kushki.log", level=logging.INFO, format="%(asctime)s %(message)s"
+    level=logging.INFO,
+    format="%(asctime)s %(message)s",
+    handlers=[logging.FileHandler("kushki.log"), logging.StreamHandler()],
+
 )
 
 
