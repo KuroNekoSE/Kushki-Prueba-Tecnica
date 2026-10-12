@@ -6,10 +6,10 @@ Prueba técnica realizada en el ambiente UAT de Kushki, con una cuenta de Méxic
 
 | Sección | Estado | Documento |
 |---|---|---|
-| I. Kajita | Inconcluso | [docs/1-kajita.md](docs/2-kajita.md) |
-| II. Procesamiento API | Inconcluso | [docs/2-api-postman.md](docs/2-api-postman.md) |
-| III. Manejo de situaciones con comercios | Completo 
-| IV. Feedback | Completo | [docs/4-feedback.md](docs/4-feedback.md) |
+| I. Kajita | Inconcluso | [Kajita](docs/2-kajita.md) |
+| II. Procesamiento API | Inconcluso | [API-Postman](docs/2-api-postman.md) |
+| III. Manejo de situaciones con comercios | Completo | [Ejercicio, Manejo de situaciones](docs/3-Manejo-de-situaciones-con-comercios.md) | 
+| IV. Feedback | Completo | [Feedback](docs/4-feedback.md) |
 | V. Bonus: formulario de pago | Inconcluso | `app.py` y `static/index.html` |
 
 URL pública del Bonus: https://kushki-prueba-tecnica.onrender.com/
