@@ -38,11 +38,12 @@
 
 ### B. Información Oficial Suministrada al Comercio
 
-| Información Permitida / Aportada: 
-| Código de ticket / referencia de incidente global.
-| Explicación funcional del comportamiento del error. 
-| Plan de mitigación temporal (Workaround técnico). 
-| Cronograma de avances y fecha estimada del release (ETA). 
+Información Permitida / Aportada: 
+1. Código de ticket / referencia de incidente global.
+2. Explicación funcional del comportamiento del error. 
+3. Plan de mitigación temporal (Workaround técnico). 
+4. Cronograma de avances y fecha estimada del release (ETA). 
+
 ---
 
 ## Caso 2: Error Crítico causado por un Tercero (Procesador, Banco Emisor o Proveedor)

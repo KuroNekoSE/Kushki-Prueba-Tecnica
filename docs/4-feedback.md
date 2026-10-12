@@ -1,6 +1,5 @@
 # IV. Feedback, Oportunidades de Mejora y Conceptos Técnicos
 
-**Objetivo:** qué querías lograr.
 **Fecha y hora:** 11/10/2026
 **Ambiente:** UAT, cuenta de México
 
