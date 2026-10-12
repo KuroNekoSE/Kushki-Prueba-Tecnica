@@ -52,7 +52,7 @@ def charge():
             "iva": 0,
             "currency": CURRENCY,
         },
-        "fullResponse": True,
+        "fullResponse": "v2",
     }
     headers = {
         "Content-Type": "application/json",
@@ -61,7 +61,7 @@ def charge():
 
     try:
         resp = requests.post(
-            f"{BASE_URL}/card/v1/charges", json=payload, headers=headers, timeout=30
+            f"{BASE_URL}/card/v1/charges", json=payload, headers=headers, timeout=35
         )
     except requests.Timeout:
         logging.error("Timeout al cobrar con Kushki")
@@ -80,7 +80,7 @@ def charge():
 
     logging.info("charge HTTP %s %s", resp.status_code, json.dumps(body))
 
-    if resp.status_code == 200 and body.get("ticketNumber"):
+    if resp.status_code in (200, 201) and body.get("ticketNumber"):
         return jsonify({"status": "approved", "ticketNumber": body["ticketNumber"]})
 
     return jsonify({

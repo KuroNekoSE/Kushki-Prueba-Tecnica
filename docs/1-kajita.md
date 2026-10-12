@@ -1,8 +1,8 @@
-#Creación de la Kajita   
+# Creación de la Kajita   
 
-**Objetivo:** Creación de la Kajita para cobro único con tarjeta.
-**Fecha:** 11/10/2026
-**Ambiente:** UAT, cuenta de México
+- **Objetivo:** Creación de la Kajita para cobro único con tarjeta.
+- **Fecha:** 11/10/2026
+- **Ambiente:** UAT, cuenta de México
 
 **Qué hice:**
 1. Creación de la cuenta por medio del Link incluido en el documento de mi prueba tecnica. Onboarding básico, sencillo y rápido. En 3 pasos te piden información, Pais, Nombre del comercio, Nombres y apellidos, teléfono, Nombre de usuario y un email. Posterior te llega un correo electronico para confirmar la creación de la cuenta y te deja acceder a la Consola para poder cambiar tu contraseña y darte acceso total como admin a la consola de pruebas.

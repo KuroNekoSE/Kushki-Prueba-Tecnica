@@ -6,13 +6,13 @@ Prueba técnica realizada en el ambiente UAT de Kushki, con una cuenta de Méxic
 
 | Sección | Estado | Documento |
 |---|---|---|
-| I. Kajita | Inconcluso | [docs/2-kajita.md](docs/2-kajita.md) |
-| II. Procesamiento API | Inconcluso | [docs/3-api-postman.md](docs/3-api-postman.md) |
-| III. Manejo de situaciones con comercios | Completo | ... |
+| I. Kajita | Inconcluso | [docs/1-kajita.md](docs/2-kajita.md) |
+| II. Procesamiento API | Inconcluso | [docs/2-api-postman.md](docs/2-api-postman.md) |
+| III. Manejo de situaciones con comercios | Completo 
 | IV. Feedback | Completo | [docs/4-feedback.md](docs/4-feedback.md) |
-| Bonus: formulario de pago | Inconcluso | `app.py` y `static/index.html` |
+| V. Bonus: formulario de pago | Inconcluso | `app.py` y `static/index.html` |
 
-URL pública del Bonus: ...
+URL pública del Bonus: https://kushki-prueba-tecnica.onrender.com/
 
 ## Cómo ejecutar el Bonus localmente
 
@@ -24,4 +24,4 @@ URL pública del Bonus: ...
 
 ## Notas
 
-Se dejan inconclusos ejercicios ya que no se tiene activo el método de pago con tarjetas. 
+Se dejan inconclusos ejercicios ya que no se tiene activo el método de pago con tarjetas. En cuanto se active el método de pago con tarjetas o se solucione el problema, se correrán de nuevo las pruebas anexando los resultados correctos y completando cada sección.

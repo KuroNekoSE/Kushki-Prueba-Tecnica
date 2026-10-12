@@ -9,23 +9,123 @@ body:
   type: json
   content: "{\r
 
-    \  \"token\": \"{{card_token}}\",\r
+    \    \"token\": \"{{card_token}}\",\r
 
-    \  \"amount\": {\r
+    \    \"amount\": {\r
 
-    \    \"subtotalIva\": 0,\r
+    \        \"subtotalIva\": 0,\r
 
-    \    \"subtotalIva0\": 1000,\r
+    \        \"subtotalIva0\": 16.98,\r
 
-    \    \"ice\": 0,\r
+    \        \"ice\": 0,\r
 
-    \    \"iva\": 0,\r
+    \        \"iva\": 0,\r
 
-    \    \"currency\": \"MXN\"\r
+    \        \"currency\": \"MXN\"\r
 
-    \  },\r
+    \    },\r
 
-    \  \"fullResponse\": true\r
+    \    \"metadata\": {\r
+
+    \        \"Referencia\": \"987654\"\r
+
+    \    },\r
+
+    \    \"contactDetails\": {\r
+
+    \        \"documentType\": \"CC\",\r
+
+    \        \"documentNumber\": \"1234567890\",\r
+
+    \        \"email\": \"user@example.com\",\r
+
+    \        \"firstName\": \"John\",\r
+
+    \        \"lastName\": \"Doe\",\r
+
+    \        \"phoneNumber\": \"+593912345678\"\r
+
+    \    },\r
+
+    \    \"orderDetails\": {\r
+
+    \        \"siteDomain\": \"example.com\",\r
+
+    \        \"shippingDetails\": {\r
+
+    \            \"name\": \"John Doe\",\r
+
+    \            \"phone\": \"+593912345678\",\r
+
+    \            \"address1\": \"Av. Insurgentes Sur 1234\",\r
+
+    \            \"address2\": \"centro 123\",\r
+
+    \            \"city\": \"Ciudad de México\",\r
+
+    \            \"region\": \"CDMX\",\r
+
+    \            \"country\": \"Mexico\"\r
+
+    \        },\r
+
+    \        \"billingDetails\": {\r
+
+    \            \"name\": \"John Doe\",\r
+
+    \            \"phone\": \"+593912345678\",\r
+
+    \            \"address1\": \"Av. Insurgentes Sur 1234\",\r
+
+    \            \"address2\": \"centro 123\",\r
+
+    \            \"city\": \"Ciudad de México\",\r
+
+    \            \"region\": \"CDMX\",\r
+
+    \            \"country\": \"Mexico\"\r
+
+    \        }\r
+
+    \    },\r
+
+    \    \"productDetails\": {\r
+
+    \        \"product\": [\r
+
+    \            {\r
+
+    \                \"id\": \"198952AB\",\r
+
+    \                \"title\": \"eBook Digital Services\",\r
+
+    \                \"price\": 10000,\r
+
+    \                \"sku\": \"10101042\",\r
+
+    \                \"quantity\": 1\r
+
+    \            },\r
+
+    \            {\r
+
+    \                \"id\": \"198953AB\",\r
+
+    \                \"title\": \"eBook Virtual Selling\",\r
+
+    \                \"price\": 6980,\r
+
+    \                \"sku\": \"004834GQ\",\r
+
+    \                \"quantity\": 1\r
+
+    \            }\r
+
+    \        ]\r
+
+    \    },\r
+
+    \    \"fullResponse\": \"v2\"\r
 
     }"
 scripts:

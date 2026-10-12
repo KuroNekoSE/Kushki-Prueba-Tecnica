@@ -7,5 +7,5 @@ headers:
 body:
   type: json
   content: ""
-examples: .resources/Void a transacction.resources/examples
+examples: .resources/Void a transaction.resources/examples
 order: 4000

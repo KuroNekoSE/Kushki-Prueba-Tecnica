@@ -1,0 +1,179 @@
+$kind: http-example
+name: Make a Charge
+request:
+  url: "{{base_url}}/card/v1/charges"
+  method: POST
+  headers:
+    Private-Merchant-Id: "{{vault:kushki-private-key}}"
+    Content-Type: application/json
+  body:
+    type: json
+    content: "{\r
+
+      \    \"token\": \"f5c64f7ac8ea42d5a58dcdc74de973dc\",\r
+
+      \    \"amount\": {\r
+
+      \        \"subtotalIva\": 0,\r
+
+      \        \"subtotalIva0\": 16.98,\r
+
+      \        \"ice\": 0,\r
+
+      \        \"iva\": 0,\r
+
+      \        \"currency\": \"MXN\"\r
+
+      \    },\r
+
+      \    \"metadata\": {\r
+
+      \        \"Referencia\": \"987654\"\r
+
+      \    },\r
+
+      \    \"contactDetails\": {\r
+
+      \        \"documentType\": \"CC\",\r
+
+      \        \"documentNumber\": \"1234567890\",\r
+
+      \        \"email\": \"user@example.com\",\r
+
+      \        \"firstName\": \"John\",\r
+
+      \        \"lastName\": \"Doe\",\r
+
+      \        \"phoneNumber\": \"+593912345678\"\r
+
+      \    },\r
+
+      \    \"orderDetails\": {\r
+
+      \        \"siteDomain\": \"example.com\",\r
+
+      \        \"shippingDetails\": {\r
+
+      \            \"name\": \"John Doe\",\r
+
+      \            \"phone\": \"+593912345678\",\r
+
+      \            \"address1\": \"Av. Insurgentes Sur 1234\",\r
+
+      \            \"address2\": \"centro 123\",\r
+
+      \            \"city\": \"Ciudad de México\",\r
+
+      \            \"region\": \"CDMX\",\r
+
+      \            \"country\": \"Mexico\"\r
+
+      \        },\r
+
+      \        \"billingDetails\": {\r
+
+      \            \"name\": \"John Doe\",\r
+
+      \            \"phone\": \"+593912345678\",\r
+
+      \            \"address1\": \"Av. Insurgentes Sur 1234\",\r
+
+      \            \"address2\": \"centro 123\",\r
+
+      \            \"city\": \"Ciudad de México\",\r
+
+      \            \"region\": \"CDMX\",\r
+
+      \            \"country\": \"Mexico\"\r
+
+      \        }\r
+
+      \    },\r
+
+      \    \"productDetails\": {\r
+
+      \        \"product\": [\r
+
+      \            {\r
+
+      \                \"id\": \"198952AB\",\r
+
+      \                \"title\": \"eBook Digital Services\",\r
+
+      \                \"price\": 10000,\r
+
+      \                \"sku\": \"10101042\",\r
+
+      \                \"quantity\": 1\r
+
+      \            },\r
+
+      \            {\r
+
+      \                \"id\": \"198953AB\",\r
+
+      \                \"title\": \"eBook Virtual Selling\",\r
+
+      \                \"price\": 6980,\r
+
+      \                \"sku\": \"004834GQ\",\r
+
+      \                \"quantity\": 1\r
+
+      \            }\r
+
+      \        ]\r
+
+      \    },\r
+
+      \    \"fullResponse\": \"v2\"\r
+
+      }"
+response:
+  statusCode: 400
+  statusText: ""
+  headers:
+    :status: "400"
+    date: Mon, 12 Oct 2026 16:11:44 GMT
+    content-type: application/json
+    content-length: "455"
+    cf-ray: a49761c6dac58aea-QRO
+    cf-cache-status: DYNAMIC
+    access-control-allow-origin: "*"
+    server: cloudflare
+    strict-transport-security: max-age=31536000; includeSubDomains; preload
+    via: 1.1 4165698929ff6aa963c860cf9537dfb6.cloudfront.net (CloudFront)
+    access-control-allow-credentials: "true"
+    x-amz-apigw-id: FI394EdBoAMEq7Q=
+    x-amz-cf-id: R_lnVDA7OQALHIxebCOzbVEdxlxVlGayyTBvtgETXxvYjxR3dKyYvA==
+    x-amz-cf-pop: DFW59-P8
+    x-amzn-requestid: 56762450-9f2f-426b-98ef-92487f297d23
+    x-amzn-trace-id: Root=1-6acd06be-5d66c6df0907cce05716d9f9
+    x-cache: Error from cloudfront
+  body:
+    type: json
+    content: |-
+      {
+        "code": "K322",
+        "message": "Transacción rechazada.",
+        "details": {
+          "amount": {
+            "subtotalIva": 0,
+            "subtotalIva0": 16.98,
+            "ice": 0,
+            "iva": 0,
+            "currency": "MXN"
+          },
+          "approvedTransactionAmount": 0,
+          "created": 1791821503000,
+          "merchantId": "20000000106169000000",
+          "merchantName": "WILLIAM TA Branch Mexico",
+          "requestAmount": 16.98,
+          "responseCode": "K322",
+          "responseText": "Transacción rechazada.",
+          "transactionId": "1294331611295412224",
+          "transactionStatus": "DECLINED",
+          "transactionType": "SALE"
+        }
+      }
+order: 2000
