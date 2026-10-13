@@ -29,25 +29,32 @@ Se encontró código de rechazo "K322" al tratar de tokenizar tarjetas por medio
 ![Renderizado del Formulario y codigo de error "K322" ](img/Bonus.png)
 
 
-**Fecha** 13/10/2026
-El equipo de Kushki ayudó a activar el método de pago con tarjeta por lo cuál se repitieron las pruebas en los ambientes ya antes preparados teniendo exito en las pruebas requisitadas en el apartado de *Objetivo*
+- **Fecha:** 13/10/2026
+
+El equipo de Kushki ayudó a activar el método de pago con tarjeta, por lo cual se repitieron las pruebas en los ambientes ya preparados, con éxito en las pruebas requeridas en el apartado de *Objetivo*.
 
 ## Tarjetas de prueba utilizadas
 
 Tarjetas oficiales del ambiente UAT de Kushki (México). En todas se usó una fecha de vencimiento futura y un CVV cualquiera.
 
 | Escenario | Tarjeta |
-|---|---|---|---|---|---|
-| Aprobada | `5451951574925480` | 
+|---|---|
+| Aprobada | `5451951574925480` |
 | Declinada al pedir el token | `4574441215190335` |
-| Declinada al cobrar | `4349003000047015` | 
+| Declinada al cobrar | `4349003000047015` |
 
+### Evidencia
 
-**Evidencia**
-![Renderizado del Formulario con procesamiento aprobado](img/PagoAprobado.png)
+**Pago aprobado**
 
-![Renderizado del Formulario con pago declinado por validación](img/Tokeninvalido.png.png)
+![Formulario con pago aprobado](img/PagoAprobado.png)
 
-![Renderizado del Formulario con pago declinado](img/Transacciondeclinada.png)
+**Tarjeta declinada al pedir el token**
+
+![Formulario con tarjeta declinada al pedir el token](img/Tokeninvalido.png)
+
+**Tarjeta declinada al cobrar**
+
+![Formulario con pago declinado al cobrar](img/Transacciondeclinada.png)
 
 **URL probada:** https://kushki-prueba-tecnica.onrender.com

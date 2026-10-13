@@ -31,17 +31,30 @@ El código de error K322 devuelve un mensaje genérico. Sería de gran utilidad 
 
 Se recomienda incluir en la documentación pública un listado de tokens de prueba activos permanentemente para entornos de Sandbox. Esto permitirá a los desarrolladores validar los flujos de `/charge` y `/void` de forma independiente a la activación manual de métodos de pago en el backend.
 
-**Actualización**
+## Actualización
+
 - **Fecha:** 13/10/2026
 
-Se pidió ayuda al equipo Kushki el cuál me apoyó activando el método de pago con tarjetas en la cuenta UAT a utilizar, se repitieron las pruebas con los ambientes anteriormente configurados y desplegados teniendo un exito en el flujo completo de tarjetas.
+Se pidió ayuda al equipo de Kushki, que activó el método de pago con tarjeta en la cuenta UAT. Con eso se repitieron las pruebas y el flujo completo con tarjeta funcionó.
 
-**Evidencia** 
-- [Request a Card Token API 201](img/Requestacardtoken201.png)
-- [Make a Charge API 201](img/Makeacharge201.png)
-Entrega el Ticketnumber: 292914147091207194
-- [Void a transaction API 201](img/Voidatransaction201.png)
-Entrega el ticketnumber: 661791927133550129
-- ![Console UAT](img/Backoffice.png.png)
-Se muestra en la consola las transacciones, tanto el cobro como la devolución del mismo con los números de ticket antes mencionados.
-- [Get List a transaction API 201](img/Gettransactionlist.png.png)
+### Evidencia
+
+**Request a card token (201)**
+
+![Request a card token, respuesta 201](img/Requestacardtoken201.png)
+
+**Make a charge (201)** · ticketNumber: `292914147091207194`
+
+![Make a charge, respuesta 201](img/Makeacharge201.png)
+
+**Void a transaction (201)** · ticketNumber: `661791927133550129`
+
+![Void a transaction, respuesta 201](img/Voidatransaction201.png)
+
+**Consola UAT:** muestran el cobro y su anulación con los mismos números de ticket.
+
+![Consola UAT con las transacciones](img/Backoffice.png)
+
+**Get transactions list (201)**
+
+![Get transactions list, respuesta 201](img/Gettransactionlist.png)

@@ -14,6 +14,7 @@
 6. Desplegué el botón ya configurado dentro de un localhost para poder visualizarlo y confirmar que no puedo transaccionar con tarjeta por ese medio.
 
 **Evidencia:** 
+
 ![Onboarding](img/Onboarding1.png)
 ![Onboarding](img/Onboarding2.png)
 ![Onboarding](img/Onboarding.png)
