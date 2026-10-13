@@ -22,10 +22,11 @@ transacciones declinadas y aprobadas).
        S-->>N: approved / declined / error
 ```
 
-**Problemas encontrados y acciones tomadas**
+**Problemas encontrados y acciones tomadas:**
 Se encontró código de rechazo "K322" al tratar de tokenizar tarjetas por medio de API, lo comuniqué con el equipo de Kushki para recibir ayuda y se documentó el error. Se dejan todos los ambientes preparados para realizar las pruebas pertinentes cuando se tenga respuesta de Kushki.
 
 **Evidencia:** 
+
 ![Renderizado del Formulario y codigo de error "K322" ](img/Bonus.png)
 
 

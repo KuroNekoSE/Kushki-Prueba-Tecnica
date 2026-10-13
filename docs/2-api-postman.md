@@ -9,19 +9,27 @@
 
 2. Se realizó request para obtener un token mediante API, pero se rechazó con un codigo K322, se infiere que la cuenta UAT no tiene activo el método de pago con tarjetas, por lo que este y los request posteriores no tendrán un resultado positivo, pero se encontrarán funcionando correctamente, en cuanto se active el método de tarjetas, en caso de que este sea el problema, los request deben funcionar correctamente.
 
-**Evidencia:** ![Request a Card Token API](img/Requestacardtoken.png)
+**Evidencia:** 
+
+![Request a Card Token API](img/Requestacardtoken.png)
 
 3. Se realizó request para hacer un cargo mediante el token obtenido previamente guardandolo en una variable {{card_token}}. No se puede testear aún porque no se recibe el token, se ocupó un token de la documentación para simular, se obtuvo comunicación con la API y un rechazo.
 
-**Evidencia:** ![Make a charge with API](img/Makeacharge.png)
+**Evidencia:** 
+
+![Make a charge with API](img/Makeacharge.png)
 
 4. Se realizó request para hacer un void al cargo previamente creado, guardando en la variable "ticket number" el dato necesario para hacer el void. Al no tener transacción anterior, se regresa un error "K067" la transacción no existe.
 
-**Evidencia:** ![Void a transaction with API](img/Voidtransaction.png)
+**Evidencia:** 
+
+![Void a transaction with API](img/Voidtransaction.png)
 
 5. Se realizó request para obtener la lista de transacciones. Dado que la cuenta no tiene transacciones, regresó una lista vacia, pero se verificó que hubo comunicación con la API sin errores en la petición. 
 
-**Evidencia:** ![Get list with API](img/Getlist.png)
+**Evidencia:** 
+
+![Get list with API](img/Getlist.png)
 
 **Problemas encontrados y acciones tomadas**
 Se encontró código de rechazo "K322" al tratar de tokenizar tarjetas por medio de API, lo comuniqué con el equipo de Kushki para recibir ayuda y se documentó el error. Se dejan todos los ambientes preparados para realizar las pruebas pertinentes cuando se tenga respuesta de Kushki.
