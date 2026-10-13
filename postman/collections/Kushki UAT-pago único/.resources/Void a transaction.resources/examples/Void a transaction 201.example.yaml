@@ -1,0 +1,38 @@
+$kind: http-example
+request:
+  url: "{{base_url}}/v1/charges/{{ticket_number}}"
+  method: DELETE
+  headers:
+    Private-Merchant-Id: "{{vault:kushki-private-key}}"
+  body:
+    type: json
+    content: ""
+response:
+  statusCode: 201
+  statusText: ""
+  headers:
+    :status: "201"
+    date: Tue, 13 Oct 2026 21:32:13 GMT
+    content-type: application/json
+    content-length: "99"
+    cf-ray: a4a174734a94eef2-QRO
+    cf-cache-status: DYNAMIC
+    access-control-allow-origin: "*"
+    server: cloudflare
+    strict-transport-security: max-age=31536000; includeSubDomains; preload
+    via: 1.1 ffb7694a0788d9296adc82540ad197ca.cloudfront.net (CloudFront)
+    access-control-allow-credentials: "true"
+    x-amz-apigw-id: FM51ZEz_IAMEl1Q=
+    x-amz-cf-id: SPerWpt4zCdxb_VckdrfxHsxu_MzPbsqAQ8JfTLHZzbvm9wa11hbmQ==
+    x-amz-cf-pop: MIA50-P5
+    x-amzn-requestid: d5595800-0c50-4c08-8300-9397a1cf6efa
+    x-amzn-trace-id: Root=1-6acea355-0d34c31860b7e1d16fb2ee96
+    x-cache: Miss from cloudfront
+  body:
+    type: json
+    content: |-
+      {
+        "ticketNumber": "661791927133550129",
+        "transactionReference": "a4cb9681-c95c-45ae-8627-5ef8f8585024"
+      }
+order: 2000

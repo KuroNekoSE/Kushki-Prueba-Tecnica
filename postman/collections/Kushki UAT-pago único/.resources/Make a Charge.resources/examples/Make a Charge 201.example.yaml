@@ -1,0 +1,190 @@
+$kind: http-example
+request:
+  url: "{{base_url}}/card/v1/charges"
+  method: POST
+  headers:
+    Private-Merchant-Id: "{{vault:kushki-private-key}}"
+    Content-Type: application/json
+  body:
+    type: json
+    content: "{\r
+
+      \    \"token\": \"{{card_token}}\",\r
+
+      \    \"amount\": {\r
+
+      \        \"subtotalIva\": 0,\r
+
+      \        \"subtotalIva0\": 1000,\r
+
+      \        \"ice\": 0,\r
+
+      \        \"iva\": 0,\r
+
+      \        \"currency\": \"MXN\"\r
+
+      \    },\r
+
+      \    \"metadata\": {\r
+
+      \        \"Referencia\": \"987654\"\r
+
+      \    },\r
+
+      \    \"contactDetails\": {\r
+
+      \        \"documentType\": \"CC\",\r
+
+      \        \"documentNumber\": \"1234567890\",\r
+
+      \        \"email\": \"user@example.com\",\r
+
+      \        \"firstName\": \"John\",\r
+
+      \        \"lastName\": \"Doe\",\r
+
+      \        \"phoneNumber\": \"+593912345678\"\r
+
+      \    },\r
+
+      \    \"orderDetails\": {\r
+
+      \        \"siteDomain\": \"example.com\",\r
+
+      \        \"shippingDetails\": {\r
+
+      \            \"name\": \"John Doe\",\r
+
+      \            \"phone\": \"+593912345678\",\r
+
+      \            \"address1\": \"Av. Insurgentes Sur 1234\",\r
+
+      \            \"address2\": \"centro 123\",\r
+
+      \            \"city\": \"Ciudad de México\",\r
+
+      \            \"region\": \"CDMX\",\r
+
+      \            \"country\": \"Mexico\"\r
+
+      \        },\r
+
+      \        \"billingDetails\": {\r
+
+      \            \"name\": \"John Doe\",\r
+
+      \            \"phone\": \"+593912345678\",\r
+
+      \            \"address1\": \"Av. Insurgentes Sur 1234\",\r
+
+      \            \"address2\": \"centro 123\",\r
+
+      \            \"city\": \"Ciudad de México\",\r
+
+      \            \"region\": \"CDMX\",\r
+
+      \            \"country\": \"Mexico\"\r
+
+      \        }\r
+
+      \    },\r
+
+      \    \"productDetails\": {\r
+
+      \        \"product\": [\r
+
+      \            {\r
+
+      \                \"id\": \"198952AB\",\r
+
+      \                \"title\": \"eBook Digital Services\",\r
+
+      \                \"price\": 500,\r
+
+      \                \"sku\": \"10101042\",\r
+
+      \                \"quantity\": 1\r
+
+      \            },\r
+
+      \            {\r
+
+      \                \"id\": \"198953AB\",\r
+
+      \                \"title\": \"eBook Virtual Selling\",\r
+
+      \                \"price\": 500,\r
+
+      \                \"sku\": \"004834GQ\",\r
+
+      \                \"quantity\": 1\r
+
+      \            }\r
+
+      \        ]\r
+
+      \    },\r
+
+      \    \"fullResponse\": \"v2\"\r
+
+      }"
+response:
+  statusCode: 201
+  statusText: ""
+  headers:
+    :status: "201"
+    date: Tue, 13 Oct 2026 21:31:53 GMT
+    content-type: application/json
+    content-length: "836"
+    cf-ray: a4a174026be2eef2-QRO
+    cf-cache-status: DYNAMIC
+    access-control-allow-origin: "*"
+    server: cloudflare
+    strict-transport-security: max-age=31536000; includeSubDomains; preload
+    via: 1.1 e8b946ba67673c8b5ef6fdba07a9fc68.cloudfront.net (CloudFront)
+    access-control-allow-credentials: "true"
+    x-amz-apigw-id: FM5ykEHKIAMEDBQ=
+    x-amz-cf-id: -9nnNb0MpedHzedQUi5GnehqFLCR3Jn5IVbONv9tLkZCD4ofeEkntA==
+    x-amz-cf-pop: MIA50-P5
+    x-amzn-requestid: dc9d875c-b631-456f-b601-413341c5172a
+    x-amzn-trace-id: Root=1-6acea343-4495151268bdae98445ca924
+    x-cache: Miss from cloudfront
+  body:
+    type: json
+    content: |-
+      {
+        "details": {
+          "amount": {
+            "subtotalIva": 0,
+            "subtotalIva0": 1000,
+            "ice": 0,
+            "iva": 0,
+            "currency": "MXN"
+          },
+          "approvalCode": "000000",
+          "approvedTransactionAmount": 1000,
+          "binInfo": {
+            "bank": "Banco de la Produccion S.A. (PRODUBANCO)",
+            "binCard": "545195",
+            "cardCountry": "Ecuador",
+            "lastFourDigits": "5480",
+            "type": "credit"
+          },
+          "cardHolderName": "Juan Perez",
+          "created": 1791927113000,
+          "merchantId": "20000000106169000000",
+          "merchantName": "WILLIAM TA Branch Mexico",
+          "paymentBrand": "Mastercard",
+          "processorBankName": "0032~BANCO INTERNACIONAL",
+          "requestAmount": 1000,
+          "responseCode": "000",
+          "responseText": "Transacción aprobada",
+          "transactionId": "711559124080741734",
+          "transactionReference": "a66da0df-03e3-4af9-8811-65c2d97642a2",
+          "transactionStatus": "APPROVAL",
+          "transactionType": "SALE"
+        },
+        "ticketNumber": "292914147091207194",
+        "transactionReference": "a66da0df-03e3-4af9-8811-65c2d97642a2"
+      }
+order: 3000

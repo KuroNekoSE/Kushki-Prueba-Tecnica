@@ -31,3 +31,13 @@ Se comentó la situación al correo electronico que se tiene en comunicación co
 
 **Observaciones para el feedback:** 
 En mi cuenta de UAT (México) la Kajita no ofrece la opción de tarjeta. Mi hipótesis es que las cuentas nuevas de prueba no traen la tarjeta habilitada. Sugiero que la prueba indique cómo activarla o que las cuentas la incluyan por defecto.
+
+**Solución y conclusión del ejercicio**
+**Fecha** 13/10/2026
+Se solicitó ayuda del equipo de Kushki, con lo cual se activó por backoffice el método de pago con tarjetas. Se repitieron las pruebas y este fue el resultado:
+
+1. Se revisaron las opciones de pago disponibles en la creación del formulario, se confirmó que existe ahora el método de pago con tarjetas y se activó para dejar lista la Kajita con este metodo al renderizarla en local, teniendo exito al mostrar opciones de pago con tarjeta de crédito/débido.
+
+**Evidencia**
+
+![Kajita con métodos de pago activos](img/Kajitacontarjetaactiva.png)

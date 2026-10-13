@@ -1,0 +1,58 @@
+$kind: http-example
+request:
+  url: "{{base_url}}/card/v1/tokens"
+  method: POST
+  headers:
+    Public-Merchant-Id: "{{public_key}}"
+    Content-Type: application/json
+  body:
+    type: json
+    content: "{\r
+
+      \  \"card\": {\r
+
+      \    \"name\": \"Juan Perez\",\r
+
+      \    \"number\": \"5451951574925480\",\r
+
+      \    \"expiryMonth\": \"12\",\r
+
+      \    \"expiryYear\": \"30\",\r
+
+      \    \"cvv\": \"123\"\r
+
+      \  },\r
+
+      \  \"totalAmount\": 1000,\r
+
+      \  \"currency\": \"MXN\"\r
+
+      }"
+response:
+  statusCode: 201
+  statusText: ""
+  headers:
+    :status: "201"
+    date: Tue, 13 Oct 2026 21:31:43 GMT
+    content-type: application/json
+    content-length: "44"
+    cf-ray: a4a173d339daeef2-QRO
+    cf-cache-status: DYNAMIC
+    access-control-allow-origin: "*"
+    server: cloudflare
+    strict-transport-security: max-age=31536000; includeSubDomains; preload
+    via: 1.1 e8b946ba67673c8b5ef6fdba07a9fc68.cloudfront.net (CloudFront)
+    access-control-allow-credentials: "true"
+    x-amz-apigw-id: FM5xaE3NoAMEK9A=
+    x-amz-cf-id: mrGB3-bI_r-oM6HwTBm818Bns_8M47QZJeQb66WkszrUtoJUf0_0Jg==
+    x-amz-cf-pop: MIA50-P5
+    x-amzn-requestid: fe74027a-87fd-4b70-bbc4-a2c4d550b52e
+    x-amzn-trace-id: Root=1-6acea33b-510ef1127242ff2e327a3183
+    x-cache: Miss from cloudfront
+  body:
+    type: json
+    content: |-
+      {
+        "token": "bceb977fe1ae4df2982027ef926720df"
+      }
+order: 2000

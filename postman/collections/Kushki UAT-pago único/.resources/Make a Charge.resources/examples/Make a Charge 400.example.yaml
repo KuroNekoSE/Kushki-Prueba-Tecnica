@@ -1,5 +1,4 @@
 $kind: http-example
-name: Make a Charge
 request:
   url: "{{base_url}}/card/v1/charges"
   method: POST

@@ -6,11 +6,11 @@ Prueba técnica realizada en el ambiente UAT de Kushki, con una cuenta de Méxic
 
 | Sección | Estado | Documento |
 |---|---|---|
-| I. Kajita | Inconcluso | [Kajita](docs/1-kajita.md) |
-| II. Procesamiento API | Inconcluso | [API-Postman](docs/2-api-postman.md) |
+| I. Kajita | Completo | [Kajita](docs/1-kajita.md) |
+| II. Procesamiento API | Completo | [API-Postman](docs/2-api-postman.md) |
 | III. Manejo de situaciones con comercios | Completo | [Ejercicio, Manejo de situaciones](docs/3-Manejo-de-situaciones-con-comercios.md) | 
 | IV. Feedback | Completo | [Feedback](docs/4-feedback.md) |
-| V. Bonus: formulario de pago | Inconcluso | `app.py` y `static/index.html` |
+| V. Bonus: formulario de pago | Completo | [Actividad Bonus](docs/5-bonus.md) |
 
 URL pública del Bonus: https://kushki-prueba-tecnica.onrender.com/
 
@@ -24,4 +24,7 @@ URL pública del Bonus: https://kushki-prueba-tecnica.onrender.com/
 
 ## Notas
 
-Se dejan inconclusos ejercicios ya que no se tiene activo el método de pago con tarjetas. En cuanto se active el método de pago con tarjetas o se solucione el problema, se correrán de nuevo las pruebas anexando los resultados correctos y completando cada sección.
+Se dejan inconclusos ejercicios ya que no se tiene activo el método de pago con tarjetas. En cuanto se active el método de pago con tarjetas o se solucione el problema, se correrán de nuevo las pruebas anexando los resultados correctos y completando cada sección. 
+
+**13/10/2026** 
+Se completa todo el ejercicio al resolver el problema de mano de Kushki con el método de pago con tarjetas.

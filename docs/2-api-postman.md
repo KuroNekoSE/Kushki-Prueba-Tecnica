@@ -1,11 +1,12 @@
 # Pruebas en entorno API con Postman
 
 - **Objetivo:** Probar los servicios API via Postman.
-- **Fecha y hora:** 11/10/2026
+- **Fecha:** 11/10/2026
 - **Ambiente:** UAT, cuenta de México
 
 **Qué hice:**
 1. Integré una colección de request en Postman para la prueba de endpoints tales como /tokens, /charge, /analytics/v2. Esto con la finalidad de replicar el flujo completo de pagos únicos con tarjeta de crédito.
+
 2. Se realizó request para obtener un token mediante API, pero se rechazó con un codigo K322, se infiere que la cuenta UAT no tiene activo el método de pago con tarjetas, por lo que este y los request posteriores no tendrán un resultado positivo, pero se encontrarán funcionando correctamente, en cuanto se active el método de tarjetas, en caso de que este sea el problema, los request deben funcionar correctamente.
 
 **Evidencia:** ![Request a Card Token API](img/Requestacardtoken.png)
@@ -29,3 +30,18 @@ Se encontró código de rechazo "K322" al tratar de tokenizar tarjetas por medio
 El código de error K322 devuelve un mensaje genérico. Sería de gran utilidad para el desarrollador que la API proporcione un detalle descriptivo más claro en el cuerpo de la respuesta (por ejemplo: 'Merchant/Credential not enabled for Card payments in UAT'), reduciendo el tiempo de diagnóstico.
 
 Se recomienda incluir en la documentación pública un listado de tokens de prueba activos permanentemente para entornos de Sandbox. Esto permitirá a los desarrolladores validar los flujos de `/charge` y `/void` de forma independiente a la activación manual de métodos de pago en el backend.
+
+**Actualización**
+- **Fecha:** 13/10/2026
+
+Se pidió ayuda al equipo Kushki el cuál me apoyó activando el método de pago con tarjetas en la cuenta UAT a utilizar, se repitieron las pruebas con los ambientes anteriormente configurados y desplegados teniendo un exito en el flujo completo de tarjetas.
+
+**Evidencia** 
+- [Request a Card Token API 201](img/Requestacardtoken201.png)
+- [Make a Charge API 201](img/Makeacharge201.png)
+Entrega el Ticketnumber: 292914147091207194
+- [Void a transaction API 201](img/Voidatransaction201.png)
+Entrega el ticketnumber: 661791927133550129
+- ![Console UAT](img/Backoffice.png.png)
+Se muestra en la consola las transacciones, tanto el cobro como la devolución del mismo con los números de ticket antes mencionados.
+- [Get List a transaction API 201](img/Gettransactionlist.png.png)

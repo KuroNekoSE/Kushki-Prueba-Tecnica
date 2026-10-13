@@ -1,5 +1,6 @@
 # III. Manejo de Situaciones Críticas con Comercios e Incidentes
 
+**Fecha:** 11/10/2026
 **Objetivo:** Evaluar el criterio técnico, la comunicación en crisis y el protocolo de gestión de incidentes ante afectaciones en el procesamiento de pagos.
 
 ---
